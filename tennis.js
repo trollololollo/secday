@@ -13,180 +13,17 @@ import { motion } from "framer-motion";
 import { BarChart3, Ticket, LayoutGrid, Users, Minus, Plus } from "lucide-react";
 
 
-const joueursData = [    
-    {"name": "Alexander Zverev", "country": "Allemagne", "ranking": 2, "age": 28, "hand": "Droitier"},
-    {"name": "Carlos Alcaraz", "country": "Espagne", "ranking": 3, "age": 22, "hand": "Droitier"},
-    {"name": "Taylor Fritz", "country": "Etats-Unis", "ranking": 4, "age": 27, "hand": "Droitier"},
-    {"name": "Jack Draper", "country": "Grande-Bretagne", "ranking": 5, "age": 23, "hand": "Gaucher"},
-    {"name": "Novak Djokovic", "country": "Serbie", "ranking": 6, "age": 37, "hand": "Droitier"},
-    {"name": "Casper Ruud", "country": "Norvège", "ranking": 7, "age": 26, "hand": "Droitier"},
-    {"name": "Alex De Minaur", "country": "Australie", "ranking": 8, "age": 26, "hand": "Droitier"},
-    {"name": "Lorenzo Musetti", "country": "Italie", "ranking": 9, "age": 23, "hand": "Droitier"},
-    {"name": "Holger Rune", "country": "Danemark", "ranking": 10, "age": 22, "hand": "Droitier"},
-    {"name": "Daniil Medvedev", "country": "", "ranking": 11, "age": 29, "hand": "Droitier"},
-    {"name": "Tommy Paul", "country": "Etats-Unis", "ranking": 12, "age": 27, "hand": "Droitier"},
-    {"name": "Ben Shelton", "country": "Etats-Unis", "ranking": 13, "age": 22, "hand": "Gaucher"},
-    {"name": "Arthur Fils", "country": "France", "ranking": 14, "age": 20, "hand": "Droitier"},
-    {"name": "Grigor Dimitrov", "country": "Bulgarie", "ranking": 15, "age": 33, "hand": "Droitier"},
-    {"name": "Frances Tiafoe", "country": "Etats-Unis", "ranking": 16, "age": 27, "hand": "Droitier"},
-    {"name": "Andrey Rublev", "country": "", "ranking": 17, "age": 27, "hand": "Droitier"},
-    {"name": "Francisco Cerundolo", "country": "Argentine", "ranking": 18, "age": 26, "hand": "Droitier"},
-    {"name": "Stefanos Tsitsipas", "country": "Grèce", "ranking": 19, "age": 26, "hand": "Droitier"},
-    {"name": "Tomas Machac", "country": "République tchèque", "ranking": 20, "age": 24, "hand": "Droitier"},
-    {"name": "Jakub Mensik", "country": "République tchèque", "ranking": 21, "age": 19, "hand": "Droitier"},
-    {"name": "Ugo Humbert", "country": "France", "ranking": 22, "age": 26, "hand": "Gaucher"},
-    {"name": "Sebastian Korda", "country": "Etats-Unis", "ranking": 23, "age": 24, "hand": "Droitier"},
-    {"name": "Karen Khachanov", "country": "", "ranking": 24, "age": 28, "hand": "Droitier"},
-    {"name": "Alexei Popyrin", "country": "Australie", "ranking": 25, "age": 25, "hand": "Droitier"},
-    {"name": "Alejandro Davidovich Fokina", "country": "Espagne", "ranking": 26, "age": 25, "hand": "Droitier"},
-    {"name": "Felix Auger-Aliassime", "country": "Canada", "ranking": 27, "age": 24, "hand": "Droitier"},
-    {"name": "Denis Shapovalov", "country": "Canada", "ranking": 28, "age": 26, "hand": "Gaucher"},
-    {"name": "Brandon Nakashima", "country": "Etats-Unis", "ranking": 29, "age": 23, "hand": "Droitier"},
-    {"name": "Matteo Berrettini", "country": "Italie", "ranking": 30, "age": 29, "hand": "Droitier"},
-    {"name": "Hubert Hurkacz", "country": "Pologne", "ranking": 31, "age": 28, "hand": "Droitier"},
-    {"name": "Alex Michelsen", "country": "Etats-Unis", "ranking": 32, "age": 20, "hand": "Droitier"},
-    {"name": "Sebastian Baez", "country": "Argentine", "ranking": 33, "age": 24, "hand": "Droitier"},
-    {"name": "Flavio Cobolli", "country": "Italie", "ranking": 34, "age": 23, "hand": "Droitier"},
-    {"name": "Tallon Griekspoor", "country": "Pays-Bas", "ranking": 35, "age": 28, "hand": "Droitier"},
-    {"name": "Giovanni Mpetshi Perricard", "country": "France", "ranking": 36, "age": 21, "hand": "Droitier"},
-    {"name": "Matteo Arnaldi", "country": "Italie", "ranking": 37, "age": 24, "hand": "Droitier"},
-    {"name": "Jiri Lehecka", "country": "République tchèque", "ranking": 38, "age": 23, "hand": "Droitier"},
-    {"name": "Alexandre Muller", "country": "France", "ranking": 39, "age": 28, "hand": "Droitier"},
-    {"name": "Nuno Borges", "country": "Portugal", "ranking": 40, "age": 28, "hand": "Droitier"},
-    {"name": "Jordan Thompson", "country": "Australie", "ranking": 41, "age": 31, "hand": "Droitier"},
-    {"name": "Alejandro Tabilo", "country": "Chili", "ranking": 42, "age": 27, "hand": "Gaucher"},
-    {"name": "Gael Monfils", "country": "France", "ranking": 43, "age": 38, "hand": "Droitier"},
-    {"name": "Lorenzo Sonego", "country": "Italie", "ranking": 44, "age": 30, "hand": "Droitier"},
-    {"name": "Marcos Giron", "country": "Etats-Unis", "ranking": 45, "age": 31, "hand": "Droitier"},
-    {"name": "Luciano Darderi", "country": "Italie", "ranking": 46, "age": 23, "hand": "Droitier"},
-    {"name": "Miomir Kecmanovic", "country": "Serbie", "ranking": 47, "age": 25, "hand": "Droitier"},
-    {"name": "David Goffin", "country": "Belgique", "ranking": 48, "age": 34, "hand": "Droitier"},
-    {"name": "Pedro Martinez", "country": "Espagne", "ranking": 49, "age": 28, "hand": "Droitier"},
-    {"name": "Zizou Bergs", "country": "Belgique", "ranking": 50, "age": 25, "hand": "Droitier"},
-    {"name": "Tomas Martin Etcheverry", "country": "Argentine", "ranking": 51, "age": 25, "hand": "Droitier"},
-    {"name": "Quentin Halys", "country": "France", "ranking": 52, "age": 28, "hand": "Droitier"},
-    {"name": "Nicolas Jarry", "country": "Chili", "ranking": 53, "age": 29, "hand": "Droitier"},
-    {"name": "Gabriel Diallo", "country": "Canada", "ranking": 54, "age": 23, "hand": "Droitier"},
-    {"name": "Zhizhen Zhang", "country": "Chine", "ranking": 55, "age": 28, "hand": "Droitier"},
-    {"name": "Roberto Bautista Agut", "country": "Espagne", "ranking": 56, "age": 37, "hand": "Droitier"},
-    {"name": "Jacob Fearnley", "country": "Grande-Bretagne", "ranking": 57, "age": 23, "hand": "Droitier"},
-    {"name": "Benjamin Bonzi", "country": "France", "ranking": 58, "age": 28, "hand": "Droitier"},
-    {"name": "Roberto Carballes Baena", "country": "Espagne", "ranking": 59, "age": 32, "hand": "Droitier"},
-    {"name": "Camilo Ugo Carabelli", "country": "Argentine", "ranking": 60, "age": 25, "hand": "Droitier"},
-    {"name": "Fabian Marozsan", "country": "Hongrie", "ranking": 61, "age": 25, "hand": "Droitier"},
-    {"name": "Kei Nishikori", "country": "Japon", "ranking": 62, "age": 35, "hand": "Droitier"},
-    {"name": "Francisco Comesana", "country": "Argentine", "ranking": 63, "age": 24, "hand": "Droitier"},
-    {"name": "Laslo Djere", "country": "Serbie", "ranking": 64, "age": 29, "hand": "Droitier"},
-    {"name": "Joao Fonseca", "country": "Brésil", "ranking": 65, "age": 18, "hand": "Droitier"},
-    {"name": "Jaume Munar", "country": "Espagne", "ranking": 66, "age": 28, "hand": "Droitier"},
-    {"name": "Mattia Bellucci", "country": "Italie", "ranking": 68, "age": 23, "hand": "Gaucher"},
-    {"name": "Damir Dzumhur", "country": "Bosnie-Herzégovine", "ranking": 69, "age": 32, "hand": "Droitier"},
-    {"name": "Learner Tien", "country": "Etats-Unis", "ranking": 70, "age": 19, "hand": "Gaucher"},
-    {"name": "Daniel Altmaier", "country": "Allemagne", "ranking": 71, "age": 26, "hand": "Droitier"},
-    {"name": "Hamad Medjedovic", "country": "Serbie", "ranking": 72, "age": 21, "hand": "Droitier"},
-    {"name": "Yunchaokete Bu", "country": "Chine", "ranking": 73, "age": 23, "hand": "Droitier"},
-    {"name": "Yoshihito Nishioka", "country": "Japon", "ranking": 74, "age": 29, "hand": "Gaucher"},
-    {"name": "Arthur Rinderknech", "country": "France", "ranking": 75, "age": 29, "hand": "Droitier"},
-    {"name": "Alexander Bublik", "country": "Kazakhstan", "ranking": 76, "age": 27, "hand": "Droitier"},
-    {"name": "Roman Safiullin", "country": "", "ranking": 77, "age": 27, "hand": "Droitier"},
-    {"name": "Hugo Gaston", "country": "France", "ranking": 78, "age": 24, "hand": "Gaucher"},
-    {"name": "Aleksandar Vukic", "country": "Australie", "ranking": 79, "age": 29, "hand": "Droitier"},
-    {"name": "Aleksandar Kovacevic", "country": "Etats-Unis", "ranking": 80, "age": 26, "hand": "Droitier"},
-    {"name": "Christopher O'Connell", "country": "Australie", "ranking": 81, "age": 30, "hand": "Droitier"},
-    {"name": "Rinky Hijikata", "country": "Australie", "ranking": 82, "age": 24, "hand": "Droitier"},
-    {"name": "Corentin Moutet", "country": "France", "ranking": 83, "age": 26, "hand": "Gaucher"},
-    {"name": "Botic Van De Zandschulp", "country": "Pays-Bas", "ranking": 85, "age": 29, "hand": "Droitier"},
-    {"name": "Raphael Collignon", "country": "Belgique", "ranking": 86, "age": 23, "hand": "Droitier"},
-    {"name": "Jan-Lennard Struff", "country": "Allemagne", "ranking": 87, "age": 35, "hand": "Droitier"},
-    {"name": "Adam Walton", "country": "Australie", "ranking": 88, "age": 26, "hand": "Droitier"},
-    {"name": "Kamil Majchrzak", "country": "Pologne", "ranking": 89, "age": 29, "hand": "Droitier"},
-    {"name": "James Duckworth", "country": "Australie", "ranking": 90, "age": 33, "hand": "Droitier"},
-    {"name": "Cameron Norrie", "country": "Grande-Bretagne", "ranking": 91, "age": 29, "hand": "Gaucher"},
-    {"name": "Vit Kopriva", "country": "République tchèque", "ranking": 92, "age": 27, "hand": "Droitier"},
-    {"name": "Jesper De Jong", "country": "Pays-Bas", "ranking": 93, "age": 24, "hand": "Droitier"},
-    {"name": "Reilly Opelka", "country": "Etats-Unis", "ranking": 94, "age": 27, "hand": "Droitier"},
-    {"name": "Mackenzie Mcdonald", "country": "Etats-Unis", "ranking": 96, "age": 30, "hand": "Droitier"},
-    {"name": "Pablo Carreno Busta", "country": "Espagne", "ranking": 98, "age": 33, "hand": "Droitier"},
-    {"name": "Mariano Navone", "country": "Argentine", "ranking": 99, "age": 24, "hand": "Droitier"},
-    {"name": "Francesco Passaro", "country": "Italie", "ranking": 101, "age": 24, "hand": "Droitier"},
-    {"name": "Hugo Dellien", "country": "Bolivie", "ranking": 103, "age": 31, "hand": "Droitier"},
-    {"name": "Thiago Monteiro", "country": "Brésil", "ranking": 106, "age": 30, "hand": "Gaucher"},
-    {"name": "Jaime Faria", "country": "Portugal", "ranking": 108, "age": 21, "hand": "Droitier"},
-    {"name": "Arthur Cazaux", "country": "France", "ranking": 116, "age": 22, "hand": "Droitier"},
-    {"name": "Valentin Royer", "country": "France", "ranking": 117, "age": 23, "hand": "Droitier"},
-    {"name": "Terence Atmane", "country": "France", "ranking": 119, "age": 23, "hand": "Gaucher"},
-    {"name": "Tristan Schoolkate", "country": "Australie", "ranking": 129, "age": 24, "hand": "Droitier"},
-    {"name": "Dusan Lajovic", "country": "Serbie", "ranking": 131, "age": 34, "hand": "Droitier"},
-    {"name": "Stan Wawrinka", "country": "Suisse", "ranking": 132, "age": 40, "hand": "Droitier"},
-    {"name": "Marton Fucsovics", "country": "Hongrie", "ranking": 134, "age": 33, "hand": "Droitier"},
-    {"name": "Emilio Nava", "country": "Etats-Unis", "ranking": 137, "age": 23, "hand": "Droitier"},
-    {"name": "Sebastian Ofner", "country": "Autriche", "ranking": 143, "age": 29, "hand": "Droitier"},
-    {"name": "Pierre-Hugues Herbert", "country": "France", "ranking": 148, "age": 34, "hand": "Droitier"},
-    {"name": "Richard Gasquet", "country": "France", "ranking": 160, "age": 38, "hand": "Droitier"},
-    {"name": "Jenson Brooksby", "country": "Etats-Unis", "ranking": 166, "age": 24, "hand": "Droitier"},
-    {"name": "Emil Ruusuvuori", "country": "Finlande", "ranking": 235, "age": 26, "hand": "Droitier"},
-    {"name": "Tomas Martin Etcheverry", "country": "Argentine", "ranking": 51, "age": 25, "hand": "Droitier"},
-    {"name": "Quentin Halys", "country": "France", "ranking": 52, "age": 28, "hand": "Droitier"},
-    {"name": "Nicolas Jarry", "country": "Chili", "ranking": 53, "age": 29, "hand": "Droitier"},
-    {"name": "Gabriel Diallo", "country": "Canada", "ranking": 54, "age": 23, "hand": "Droitier"},
-    {"name": "Zhizhen Zhang", "country": "Chine", "ranking": 55, "age": 28, "hand": "Droitier"},
-    {"name": "Roberto Bautista Agut", "country": "Espagne", "ranking": 56, "age": 37, "hand": "Droitier"},
-    {"name": "Jacob Fearnley", "country": "Grande-Bretagne", "ranking": 57, "age": 23, "hand": "Droitier"},
-    {"name": "Benjamin Bonzi", "country": "France", "ranking": 58, "age": 28, "hand": "Droitier"},
-    {"name": "Roberto Carballes Baena", "country": "Espagne", "ranking": 59, "age": 32, "hand": "Droitier"},
-    {"name": "Camilo Ugo Carabelli", "country": "Argentine", "ranking": 60, "age": 25, "hand": "Droitier"},
-    {"name": "Fabian Marozsan", "country": "Hongrie", "ranking": 61, "age": 25, "hand": "Droitier"},
-    {"name": "Kei Nishikori", "country": "Japon", "ranking": 62, "age": 35, "hand": "Droitier"},
-    {"name": "Francisco Comesana", "country": "Argentine", "ranking": 63, "age": 24, "hand": "Droitier"},
-    {"name": "Laslo Djere", "country": "Serbie", "ranking": 64, "age": 29, "hand": "Droitier"},
-    {"name": "Joao Fonseca", "country": "Brésil", "ranking": 65, "age": 18, "hand": "Droitier"},
-    {"name": "Jaume Munar", "country": "Espagne", "ranking": 66, "age": 28, "hand": "Droitier"},
-    {"name": "Mattia Bellucci", "country": "Italie", "ranking": 68, "age": 23, "hand": "Gaucher"},
-    {"name": "Damir Dzumhur", "country": "Bosnie-Herzégovine", "ranking": 69, "age": 32, "hand": "Droitier"},
-    {"name": "Learner Tien", "country": "Etats-Unis", "ranking": 70, "age": 19, "hand": "Gaucher"},
-    {"name": "Daniel Altmaier", "country": "Allemagne", "ranking": 71, "age": 26, "hand": "Droitier"},
-    {"name": "Hamad Medjedovic", "country": "Serbie", "ranking": 72, "age": 21, "hand": "Droitier"},
-    {"name": "Yunchaokete Bu", "country": "Chine", "ranking": 73, "age": 23, "hand": "Droitier"},
-    {"name": "Yoshihito Nishioka", "country": "Japon", "ranking": 74, "age": 29, "hand": "Gaucher"},
-    {"name": "Arthur Rinderknech", "country": "France", "ranking": 75, "age": 29, "hand": "Droitier"},
-    {"name": "Alexander Bublik", "country": "Kazakhstan", "ranking": 76, "age": 27, "hand": "Droitier"},
-    {"name": "Roman Safiullin", "country": "", "ranking": 77, "age": 27, "hand": "Droitier"},
-    {"name": "Hugo Gaston", "country": "France", "ranking": 78, "age": 24, "hand": "Gaucher"},
-    {"name": "Aleksandar Vukic", "country": "Australie", "ranking": 79, "age": 29, "hand": "Droitier"},
-    {"name": "Aleksandar Kovacevic", "country": "Etats-Unis", "ranking": 80, "age": 26, "hand": "Droitier"},
-    {"name": "Christopher O'Connell", "country": "Australie", "ranking": 81, "age": 30, "hand": "Droitier"},
-    {"name": "Rinky Hijikata", "country": "Australie", "ranking": 82, "age": 24, "hand": "Droitier"},
-    {"name": "Corentin Moutet", "country": "France", "ranking": 83, "age": 26, "hand": "Gaucher"},
-    {"name": "Botic Van De Zandschulp", "country": "Pays-Bas", "ranking": 85, "age": 29, "hand": "Droitier"},
-    {"name": "Raphael Collignon", "country": "Belgique", "ranking": 86, "age": 23, "hand": "Droitier"},
-    {"name": "Jan-Lennard Struff", "country": "Allemagne", "ranking": 87, "age": 35, "hand": "Droitier"},
-    {"name": "Adam Walton", "country": "Australie", "ranking": 88, "age": 26, "hand": "Droitier"},
-    {"name": "Kamil Majchrzak", "country": "Pologne", "ranking": 89, "age": 29, "hand": "Droitier"},
-    {"name": "James Duckworth", "country": "Australie", "ranking": 90, "age": 33, "hand": "Droitier"},
-    {"name": "Cameron Norrie", "country": "Grande-Bretagne", "ranking": 91, "age": 29, "hand": "Gaucher"},
-    {"name": "Vit Kopriva", "country": "République tchèque", "ranking": 92, "age": 27, "hand": "Droitier"},
-    {"name": "Jesper De Jong", "country": "Pays-Bas", "ranking": 93, "age": 24, "hand": "Droitier"},
-    {"name": "Reilly Opelka", "country": "Etats-Unis", "ranking": 94, "age": 27, "hand": "Droitier"},
-    {"name": "Mackenzie Mcdonald", "country": "Etats-Unis", "ranking": 96, "age": 30, "hand": "Droitier"},
-    {"name": "Pablo Carreno Busta", "country": "Espagne", "ranking": 98, "age": 33, "hand": "Droitier"},
-    {"name": "Mariano Navone", "country": "Argentine", "ranking": 99, "age": 24, "hand": "Droitier"},
-    {"name": "Francesco Passaro", "country": "Italie", "ranking": 101, "age": 24, "hand": "Droitier"},
-    {"name": "Hugo Dellien", "country": "Bolivie", "ranking": 103, "age": 31, "hand": "Droitier"},
-    {"name": "Thiago Monteiro", "country": "Brésil", "ranking": 106, "age": 30, "hand": "Gaucher"},
-    {"name": "Jaime Faria", "country": "Portugal", "ranking": 108, "age": 21, "hand": "Droitier"},
-    {"name": "Arthur Cazaux", "country": "France", "ranking": 116, "age": 22, "hand": "Droitier"},
-    {"name": "Valentin Royer", "country": "France", "ranking": 117, "age": 23, "hand": "Droitier"},
-    {"name": "Terence Atmane", "country": "France", "ranking": 119, "age": 23, "hand": "Gaucher"},
-    {"name": "Tristan Schoolkate", "country": "Australie", "ranking": 129, "age": 24, "hand": "Droitier"},
-    {"name": "Dusan Lajovic", "country": "Serbie", "ranking": 131, "age": 34, "hand": "Droitier"},
-    {"name": "Stan Wawrinka", "country": "Suisse", "ranking": 132, "age": 40, "hand": "Droitier"},
-    {"name": "Marton Fucsovics", "country": "Hongrie", "ranking": 134, "age": 33, "hand": "Droitier"},
-    {"name": "Emilio Nava", "country": "Etats-Unis", "ranking": 137, "age": 23, "hand": "Droitier"},
-    {"name": "Sebastian Ofner", "country": "Autriche", "ranking": 143, "age": 29, "hand": "Droitier"},
-    {"name": "Pierre-Hugues Herbert", "country": "France", "ranking": 148, "age": 34, "hand": "Droitier"},
-    {"name": "Richard Gasquet", "country": "France", "ranking": 160, "age": 38, "hand": "Droitier"},
-    {"name": "Jenson Brooksby", "country": "Etats-Unis", "ranking": 166, "age": 24, "hand": "Droitier"},
-    {"name": "Emil Ruusuvuori", "country": "Finlande", "ranking": 235, "age": 26, "hand": "Droitier"}
+const joueursData = [
+  { nom: "Jannik Sinner", pays: "Italie", classement: 1, age: 23, main: "Droitier" },
+  { nom: "Alexander Zverev", pays: "Allemagne", classement: 2, age: 28, main: "Droitier" },
+  { nom: "Carlos Alcaraz", pays: "Espagne", classement: 3, age: 22, main: "Droitier" },
+  { nom: "Taylor Fritz", pays: "Etats-Unis", classement: 4, age: 27, main: "Droitier" },
+  { nom: "Jack Draper", pays: "Grande-Bretagne", classement: 5, age: 23, main: "Gaucher" },
+  { nom: "Novak Djokovic", pays: "Serbie", classement: 6, age: 37, main: "Droitier" },
+  { nom: "Casper Ruud", pays: "Norvège", classement: 7, age: 26, main: "Droitier" },
+  { nom: "Alex De Minaur", pays: "Australie", classement: 8, age: 26, main: "Droitier" },
+  { nom: "Lorenzo Musetti", pays: "Italie", classement: 9, age: 23, main: "Droitier" },
+  { nom: "Holger Rune", pays: "Danemark", classement: 10, age: 22, main: "Droitier" },
 ];
 
 const allData = {
@@ -257,54 +94,7 @@ const App = () => {
           <button onClick={() => setSection("billetterie")} className={`px-4 py-2 rounded-xl flex items-center gap-2 ${section === "billetterie" ? "bg-orange-600 text-white" : "bg-gray-300"}`}><Ticket className="w-4 h-4" /> Billetterie</button>
         </div>
       </header>
-      {section === "joueurs" && (
-        <div className="bg-white p-6 rounded-xl shadow">
-          <h2 className="text-2xl font-bold mb-4">Liste des Joueurs</h2>
-          <div className="flex gap-4 mb-4 flex-wrap">
-            <div className="flex gap-2 items-center">
-              <label>Main :</label>
-              <select value={handFilter} onChange={(e) => setHandFilter(e.target.value)} className="border p-1 rounded">
-                <option value="all">Tous</option>
-                <option value="droitier">Droitier</option>
-                <option value="gaucher">Gaucher</option>
-              </select>
-            </div>
-            <div className="flex gap-2 items-center">
-              <label>Sexe :</label>
-              <select value={genderFilter} onChange={(e) => setGenderFilter(e.target.value)} className="border p-1 rounded">
-                <option value="all">Tous</option>
-                <option value="Homme">Hommes</option>
-                <option value="Femme">Femmes</option>
-              </select>
-            </div>
-            <div className="flex gap-2 items-center">
-              <label>Pays :</label>
-              <select value={countryFilter} onChange={(e) => setCountryFilter(e.target.value)} className="border p-1 rounded">
-                <option value="all">Tous</option>
-                {countries.map((pays, idx) => <option key={idx} value={pays}>{pays}</option>)}
-              </select>
-            </div>
-          </div>
-          <table className="w-full text-left">
-            <thead>
-              <tr>
-                <th>Nom</th><th>Pays</th><th>Classement</th><th>Âge</th><th>Main</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredJoueurs.map((j, idx) => (
-                <tr key={idx} className="border-t">
-                  <td>{j.name}</td>
-                  <td>{j.country}</td>
-                  <td>{j.ranking}</td>
-                  <td>{j.age}</td>
-                  <td>{j.hand}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+
       {section === "billetterie" && (
         <div className="bg-white p-6 rounded-xl shadow">
           {!afficherPaiement ? (
